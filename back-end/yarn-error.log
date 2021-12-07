@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node@16/16.13.1/libexec/node /usr/local/bin/yarn add @types/typeorm -D
+  /usr/local/Cellar/node@16/16.13.1/libexec/node /usr/local/bin/yarn add crypo-js
 
 PATH: 
   /usr/local/opt/python@3.10/bin:/usr/local/Cellar/node@16/16.13.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/jeff/.local/share/zinit/polaris/bin:/usr/local/opt/node@16/bin:/Users/jeff/Android/Sdk/emulator:/Users/jeff/Android/Sdk/tools:/Users/jeff/Android/Sdk/tools/bin:/Users/jeff/Android/Sdk/platform-tools:/usr/local/opt/node@16/bin:/Users/jeff/Android/Sdk/emulator:/Users/jeff/Android/Sdk/tools:/Users/jeff/Android/Sdk/tools/bin:/Users/jeff/Android/Sdk/platform-tools
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2ftypeorm: Not found
+  Error: https://registry.yarnpkg.com/crypo-js: Not found
       at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:67029:18)
       at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140883:22)
       at Request.emit (node:events:390:28)
