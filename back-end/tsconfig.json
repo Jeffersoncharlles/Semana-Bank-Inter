@@ -5,6 +5,14 @@
       "rootDir": "./src",
       "outDir": "./build",
       "esModuleInterop": true,
-      "strict": true
+      "strict": true,
+      "emitDecoratorMetadata": true,
+      "strictPropertyInitialization": false,
+      "experimentalDecorators": true,
+      "typeRoots": [
+        "./src/@types",
+        "./@types",
+        "./node_modules/@types"
+      ]
     }
   }
