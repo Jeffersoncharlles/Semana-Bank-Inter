@@ -2,14 +2,14 @@ import {
     Entity,
     PrimaryGeneratedColumn,
     JoinColumn,
-    OneToOne,
     Column,
     CreateDateColumn,
     UpdateDateColumn,
     ManyToOne
 } from 'typeorm';
+import { User } from './User';
 
-@Entity('pix')
+@Entity()
 class Pix {
 
     @PrimaryGeneratedColumn('uuid')
@@ -17,6 +17,14 @@ class Pix {
 
     @Column()
     status: string;
+
+    @ManyToOne(() => User, user => user.id)
+    @JoinColumn()
+    requestingUser: User;
+
+    @ManyToOne(() => User, user => user.id, { nullable: true })
+    @JoinColumn()
+    payingUser: User;
 
     @Column()
     value: number;
@@ -26,7 +34,6 @@ class Pix {
 
     @UpdateDateColumn()
     updated_at: Date;
-
 }
 
 export { Pix }
