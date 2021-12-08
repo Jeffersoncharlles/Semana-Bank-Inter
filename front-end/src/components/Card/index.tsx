@@ -8,7 +8,7 @@ interface CardProps {
     children?: React.ReactNode;
     height?: string;
     noShadow?: boolean;
-    background?: string
+    background?: string;
 }
 
 export const Card = (

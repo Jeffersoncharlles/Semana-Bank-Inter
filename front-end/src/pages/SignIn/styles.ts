@@ -42,8 +42,9 @@ export const ButtonContainer = styled.div`
         color:${({ theme }) => theme.colors.secondary};
 
         a {
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 700;
+            color:${({ theme }) => theme.colors.primary};
         }
     }
 `;

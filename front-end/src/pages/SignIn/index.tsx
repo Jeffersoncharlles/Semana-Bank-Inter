@@ -10,8 +10,15 @@ import logoSvg from '../../assets/Logo-banco-inter.svg'
 import { Card } from '../../components/Card';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const SignIn = () => {
+
+    const navigate = useNavigate();
+
+    const handleToSignIn = () => {
+        navigate('/dashboard');
+    }
 
     return (
         <Container>
@@ -24,7 +31,8 @@ export const SignIn = () => {
                 </InputContainer>
 
                 <ButtonContainer>
-                    <Button type='button' >Entrar</Button>
+                    <Button type='button' onClick={handleToSignIn} >Entrar</Button>
+                    <p>Ainda não é cadastrado? <Link to="/signup">Cadastra-se já</Link></p>
                 </ButtonContainer>
             </Card >
         </Container>

@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body{
-    background-color:${({ theme }) => theme.colors.background} ;
+    background:${({ theme }) => theme.colors.background} ;
     -webkit-font-smoothing: antialiased;//detalhes de font webkit
 }
 
@@ -39,6 +39,10 @@ h1,h2,h3,h4,h5,h6,strong {
 button {
         cursor: pointer;
     }
+
+textarea:focus, input:focus{
+    outline: none;
+}
 
 
 `
