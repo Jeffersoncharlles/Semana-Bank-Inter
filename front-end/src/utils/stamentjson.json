@@ -1,0 +1,39 @@
+[
+    {
+        "user": {
+            "firstName": "Rosetta ",
+            "lastName": "Salazar"
+        },
+        "value": 500.00,
+        "updated_at": "2021-12-08T18:15:25.616Z",
+        "type": "paid"
+    },
+    {
+        "user": {
+            "firstName": "Rosetta ",
+            "lastName": "Salazar"
+        },
+        "value": 500.00,
+        "updated_at": "2021-12-08T18:15:25.616Z",
+        "type": "paid"
+    },
+    {
+        "user": {
+            "firstName": "Rosetta ",
+            "lastName": "Salazar"
+        },
+        "value": 500.00,
+        "updated_at": "2021-12-08T18:15:25.616Z",
+        "type": "paid"
+    },
+    {
+        "user": {
+            "firstName": "Rosetta ",
+            "lastName": "Salazar"
+        },
+        "value": 500.00,
+        "updated_at": "2021-12-08T18:15:25.616Z",
+        "type": "paid"
+    }
+    
+]
