@@ -60,6 +60,13 @@ a {
     font-weight: 600;
 }
 
+.primary-color{
+    font-size: 1.1rem;
+    color: ${({ theme }) => theme.colors.primary};
+    font-weight: 600;
+    padding-top: 5px;
+    line-height: 1.25;
+}
 
 `
 
