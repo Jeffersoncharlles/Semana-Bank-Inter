@@ -3,7 +3,7 @@
     "type":"postgres",
     "host":"localhost",
     "port":5432,
-    "username":"docker",
+    "username":"admin",
     "password":"inter",
     "database":"inter",
     "entities":["src/entity/*.ts"],
