@@ -2,23 +2,20 @@ import { getRepository } from 'typeorm';
 import { User } from '../../entity/User';
 import { UserSignIn } from './dtos/user.signin.dtos';
 import { UserSignUp } from './dtos/user.signup.dtos';
-import hmacSHA512 from 'crypto-js/sha256'
 import { AppError } from '../../shared/error/AppError';
 import authConfig from '../../config/auth'
 
 import { sign } from 'jsonwebtoken'
+import sha256 from 'crypto-js/sha256';
 
 class UserService {
     async signin(user: UserSignIn) {
         const repository = getRepository(User);
 
         const { email, password } = user;
-        const passwordHash = hmacSHA512(password).toString();
+        const passwordHash = sha256(password).toString();
 
-        console.log(passwordHash)
-
-        const userExists = await repository
-            .findOne({ where: { email, password: passwordHash } })
+        const userExists = await repository.findOne({ where: { email, password: passwordHash } })
 
         if (!userExists) {
             throw new AppError("User already exists!", 401);
@@ -26,7 +23,7 @@ class UserService {
 
         const { secret, expiresIn } = authConfig.jwt;
         const token = sign({
-            firstName: userExists.firstNane,
+            firstName: userExists.firstName,
             lastName: userExists.lastName,
             accountNumber: userExists.accountNumber,
             accountDigit: userExists.accountDigit,
@@ -45,6 +42,38 @@ class UserService {
     }
     async signup(user: UserSignUp) {
 
+        const repository = getRepository(User);
+
+        const userExists = await repository
+            .findOne({ where: { email: user.email } })
+
+        if (userExists) {
+            throw new AppError("User already exists!", 401);
+        }
+
+        const userData = {
+            ...user,
+            password: sha256(user.password).toString(),
+            wallet: 2000,
+            accountNumber: Math.floor(Math.random() * 999999),
+            accountDigit: Math.floor(Math.random() * 99),
+        }
+
+        const userCreate = await repository.save(userData);
+
+        const { secret, expiresIn } = authConfig.jwt;
+        const token = sign({
+            firstName: user.firstName,
+            lastName: user.lastName,
+            accountNumber: userData.accountNumber,
+            accountDigit: userData.accountDigit,
+            wallet: userData.wallet
+        }, secret, {
+            subject: userCreate.id,
+            expiresIn,
+        });
+
+        return { accessToken: token };
     }
 
 }

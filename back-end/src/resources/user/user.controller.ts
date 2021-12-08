@@ -12,7 +12,12 @@ class UserController {
         return res.status(200).json(users);
     }
     async signup(req: Request, res: Response) {
-        return res.send("criando com o usuario")
+        const user = req.body;
+        const userService = new UserService();
+
+        const users = await userService.signup(user);
+
+        return res.status(200).json(users);
     }
 
 }

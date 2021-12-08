@@ -13,7 +13,7 @@ class User {
     id: string;
 
     @Column()
-    firstNane: string;
+    firstName: string;
 
     @Column()
     lastName: string;
