@@ -1,3 +1,4 @@
+
 import {
     Container,
 } from './styles';
@@ -7,6 +8,7 @@ interface CardProps {
     children?: React.ReactNode;
     height?: string;
     noShadow?: boolean;
+    background?: string
 }
 
 export const Card = (
@@ -16,7 +18,7 @@ export const Card = (
         noShadow = false,
     }: CardProps) => {
     return (
-        <Container width={width} height={height} noShadow={noShadow}>
+        <Container width={width} height={height} noShadow={noShadow} >
             {children}
         </Container>
     );
