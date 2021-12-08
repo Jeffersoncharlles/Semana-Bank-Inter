@@ -9,7 +9,7 @@ pixRoutes.use(userAuthenticated)//todas as rotas protegidas
 const pixController = new PixController();
 
 pixRoutes.post("/request", pixController.request)
-pixRoutes.post("/pay", pixController.pay)
+pixRoutes.post("/pay/:key", pixController.pay)
 pixRoutes.get("/transactions", pixController.transactions)
 
 export { pixRoutes }
