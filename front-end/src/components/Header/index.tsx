@@ -5,11 +5,15 @@ import {
 } from './styles';
 
 import logoImg from '../../assets/Logo-banco-inter.svg';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 
 export const Header = () => {
-    const navigation = useNavigate();
+    // const navigation = useNavigate();
+
+    // const handleLogout = () => {
+    //     navigation('/logout')
+    // }
 
     return (
         <Container>

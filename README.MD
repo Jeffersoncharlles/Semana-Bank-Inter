@@ -1,4 +1,6 @@
-
+<h1 align='center'>
+  <img src='./front-end/src/assets/Logo-banco-inter.svg'>
+</h1>
 <div align="center">
   <a href="https://opensource.org/licenses/MIT"><img alt="License MIT" src="https://img.shields.io/badge/license-MIT-brightgreen"></a>
 </div>
