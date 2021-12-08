@@ -25,7 +25,7 @@ const userAuthenticated = (
         throw new AppError("token not exist!", 401);
     }
 
-    const [, token] = authHeader.split('');
+    const [, token] = authHeader.split(' ');
 
     try {
         const decoded = verify(token, authConfig.jwt.secret);

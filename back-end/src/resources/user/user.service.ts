@@ -76,6 +76,20 @@ class UserService {
         return { accessToken: token };
     }
 
+    async me(user: Partial<User>) {
+        const repository = getRepository(User);
+        const userExists = await repository.findOne({ where: { id: user.id } })
+
+        if (!userExists) {
+            throw new AppError("User already exists!", 401);
+        }
+
+        //@ts-expect-error ignora
+        delete userExists.password
+
+        return userExists;
+    }
+
 }
 
 export { UserService }

@@ -74,9 +74,9 @@ class PixService {
     async transactions(user: Partial<User>) {
         const pixRepository = getRepository(Pix);
 
-        const pixReceived = await pixRepository.find({ where: { requestingUser: user.id, status: 'close', relations: ['requestingUser'] } });
+        const pixReceived = await pixRepository.find({ where: { requestingUserId: user.id, status: 'close', relations: ['requestingUser'] } });
 
-        const pixPaying = await pixRepository.find({ where: { payingUser: user.id, status: 'close', relations: ['requestingUser'] } })
+        const pixPaying = await pixRepository.find({ where: { payingUserId: user.id, status: 'close', relations: ['requestingUser'] } })
 
         const received = pixReceived.map(transaction => ({
             value: transaction.value,
