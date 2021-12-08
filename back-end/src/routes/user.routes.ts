@@ -9,7 +9,7 @@ const userController = new UserController()
 
 userRouter.post("/signin", userController.signin)
 userRouter.post("/signup", userController.signup)
-userRouter.post("/me", userAuthenticated, userController.signup)
+userRouter.get("/me", userAuthenticated, userController.me)
 
 
 export { userRouter }

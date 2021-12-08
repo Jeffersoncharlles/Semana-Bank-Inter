@@ -20,7 +20,7 @@ class UserController {
         return res.status(200).json(users);
     }
 
-    async signup(req: Request, res: Response) {
+    async me(req: Request, res: Response) {
         const user = req.user;
         const userService = new UserService();
 
