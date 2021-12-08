@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Jefferson\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add start:dev
+  C:\Program Files\nodejs\node.exe C:\Users\Jefferson\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add jsowebtoken
 
 PATH: 
   C:\Python310\Scripts\;C:\Python310\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\OpenJDK\openjdk-11.0.12_7\bin;C:\Windows\system32\config\systemprofile\AppData\Roaming\npm;C:\Android\Sdk\emulator;C:\Android\Sdk\tools;C:\Android\Sdk\tools\bin;C:\Android\Sdk\platform-tools;C:\Program Files\Microsoft VS Code\bin;C:\Users\Jefferson\AppData\Roaming\npm\node_modules\yarn\bin;C:\Program Files\dotnet\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files (x86)\Paragon Software\APFS for Windows\;C:\Users\Jefferson\AppData\Local\Microsoft\WindowsApps;C:\Users\Jefferson\AppData\Roaming\npm;C:\Users\Jefferson\AppData\Roaming\npm
@@ -14,17 +14,17 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: start:dev: Invalid protocol: start:
-      at Request.module.exports.Request.init (C:\Users\Jefferson\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141154:31)
-      at new Request (C:\Users\Jefferson\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140827:8)
-      at request (C:\Users\Jefferson\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:137733:10)
-      at RequestManager.execute (C:\Users\Jefferson\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66192:15)
-      at RequestManager.shiftQueue (C:\Users\Jefferson\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66230:10)
-      at C:\Users\Jefferson\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:65899:13
-      at new Promise (<anonymous>)
-      at new F (C:\Users\Jefferson\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:5301:28)
-      at RequestManager.request (C:\Users\Jefferson\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:65897:19)
-      at NpmRegistry.<anonymous> (C:\Users\Jefferson\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:31747:42)
+  Error: https://registry.yarnpkg.com/jsowebtoken: Not found
+      at Request.params.callback [as _callback] (C:\Users\Jefferson\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66140:18)
+      at Request.self.callback (C:\Users\Jefferson\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140885:22)
+      at Request.emit (node:events:390:28)
+      at Request.<anonymous> (C:\Users\Jefferson\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141857:10)
+      at Request.emit (node:events:390:28)
+      at IncomingMessage.<anonymous> (C:\Users\Jefferson\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141779:12)
+      at Object.onceWrapper (node:events:509:28)
+      at IncomingMessage.emit (node:events:402:35)
+      at endReadableNT (node:internal/streams/readable:1343:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
 
 npm manifest: 
   {

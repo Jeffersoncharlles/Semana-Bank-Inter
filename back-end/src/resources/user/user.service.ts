@@ -4,13 +4,11 @@ import { UserSignIn } from './dtos/user.signin.dtos';
 import { UserSignUp } from './dtos/user.signup.dtos';
 import hmacSHA512 from 'crypto-js/sha256'
 import { AppError } from '../../shared/error/AppError';
+import authConfig from '../../config/auth'
+
+import { sign } from 'jsonwebtoken'
 
 class UserService {
-    // private repository: Repository<User>
-    // constructor() {
-    //     this.repository = getRepository(User);
-    // }
-
     async signin(user: UserSignIn) {
         const repository = getRepository(User);
 
@@ -26,8 +24,24 @@ class UserService {
             throw new AppError("User already exists!", 401);
         }
 
+        const { secret, expiresIn } = authConfig.jwt;
+        const token = sign({
+            firstName: userExists.firstNane,
+            lastName: userExists.lastName,
+            accountNumber: userExists.accountNumber,
+            accountDigit: userExists.accountDigit,
+            wallet: userExists.wallet
+        }, secret, {
+            subject: userExists.id,
+            expiresIn,
+        });
 
-        return userExists;
+        //@ts-expect-error ignora
+
+        delete userExists.password
+
+
+        return { accessToken: token };
     }
     async signup(user: UserSignUp) {
 
