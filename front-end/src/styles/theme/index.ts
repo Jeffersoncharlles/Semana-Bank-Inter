@@ -1,7 +1,8 @@
 
 import { colors } from "../colors";
 
-export const theme = {
+// eslint-disable-next-line
+export default {
     colors: {
         primary: colors.PRIMARY,
         secondary: colors.SECONDARY,
