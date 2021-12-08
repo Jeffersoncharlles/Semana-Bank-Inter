@@ -3,10 +3,13 @@
     "type":"postgres",
     "host":"localhost",
     "port":5432,
-    "username":"admin",
+    "username":"docker",
     "password":"inter",
     "database":"inter",
     "entities":["src/entity/*.ts"],
-    "logging":false,
-    "synchronize":true
+    "migrations": ["./src/shared/typeorm/migrations/*.ts"],
+    "cli": {
+        "migrationsDir": "./src/shared/typeorm/migrations"
+    }
+
 }

@@ -1,4 +1,4 @@
-//import "reflect-metadata";
+import "express-async-errors";
 import express from 'express';
 import { createConnection } from 'typeorm';
 import { globalErrors } from './middlewares/globalErros';
@@ -7,6 +7,8 @@ import { routes } from './routes';
 createConnection().then(connection => {
   const app = express();
   const PORT = 3333;
+
+  app.use(express.json())
 
   //app.get('/', (req, res) => res.send('Express + TypeScript Server'));
   app.use(routes)
