@@ -50,6 +50,16 @@ a {
     
 }
 
+.wallet{
+    font-size: 2.5rem;
+    color: ${({ theme }) => theme.colors.primary};
+    font-weight: 700;
+}
+
+.h2{
+    font-weight: 600;
+}
+
 
 `
 
