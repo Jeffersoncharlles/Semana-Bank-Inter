@@ -25,4 +25,14 @@ export const UserInfo = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    a {
+        color: ${({ theme }) => theme.colors.primary};
+        font-weight: 600;
+        cursor: pointer;
+    }
+    span {
+        color: ${({ theme }) => theme.colors.primary};
+        font-weight: 600;
+    }
 `;

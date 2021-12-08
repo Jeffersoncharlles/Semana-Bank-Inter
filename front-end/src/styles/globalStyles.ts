@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Roboto', sans-serif;
 }
 
 body{
@@ -40,8 +41,13 @@ button {
         cursor: pointer;
     }
 
-textarea:focus, input:focus{
+textarea:focus, input:focus, select:focus{
     outline: none;
+}
+
+a {
+    text-decoration: none;
+    
 }
 
 
