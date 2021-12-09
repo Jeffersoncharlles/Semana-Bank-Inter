@@ -28,8 +28,17 @@ export const Dashboard = () => {
         }
     }
 
-    const handleReceivedPix = () => {
+    const handleReceivedPix = async () => {
+        try {
+            const { data } = await pay(key)
 
+            if (data.msg) {
+                alert(data.msg);
+                return;
+            }
+        } catch (error) {
+            alert("Nao foi possivel receber o pix do mesmo usuario")
+        }
     }
 
     useEffect(() => {
