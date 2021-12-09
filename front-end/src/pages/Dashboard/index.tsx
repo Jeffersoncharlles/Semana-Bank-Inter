@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '../../components/Button';
 import { Card } from '../../components/Card';
 import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
 import { useAuth } from '../../hooks/useAuth';
+import { pay, request } from '../../services/resources/pix';
 import { Statement } from './Statement';
 import {
     Container,
@@ -14,8 +15,22 @@ import {
 
 export const Dashboard = () => {
     const { user, getCurrentUser } = useAuth();
-
     const wallet = user?.wallet || 0;
+    const [key, setKey] = useState('');
+    const [generatedKey, setGeneratedKey] = useState('');
+    const [newVale, setNewVale] = useState('');
+
+    const handleNewPayment = async () => {
+        const { data } = await request(Number(newVale))
+
+        if (data.copyPasteKey) {
+            setGeneratedKey(data.copyPasteKey)
+        }
+    }
+
+    const handleReceivedPix = () => {
+
+    }
 
     useEffect(() => {
         getCurrentUser();
@@ -47,11 +62,20 @@ export const Dashboard = () => {
                             <h2 className='h2'>Receber PIX</h2>
                         </InlineTitle>
                         <InlineContainer>
-                            <Input style={{ flex: 1 }} placeholder='Valor' />
-                            <Button>Gerar Codigo</Button>
+                            <Input
+                                style={{ flex: 1 }}
+                                value={newVale}
+                                onChange={e => setNewVale(e.target.value)}
+                                placeholder='Valor'
+                            />
+                            <Button onClick={handleNewPayment}>Gerar Codigo</Button>
                         </InlineContainer>
-                        <p className='primary-color'>Pix copia e cola</p>
-                        <p className='primary-color'>h23h2g3hb23-hg23hg2-hj23hb23</p>
+
+                        {generatedKey && (<>
+                            <p className='primary-color'>Pix copia e cola</p>
+                            <p className='primary-color'>{generatedKey}</p>
+                        </>
+                        )}
                     </Card>
 
                     <Card noShadow width='90%'>
@@ -59,8 +83,13 @@ export const Dashboard = () => {
                             <h2 className='h2'>Pagar PIX</h2>
                         </InlineTitle>
                         <InlineContainer>
-                            <Input style={{ flex: 1 }} placeholder='Insira a chave' />
-                            <Button>Pagar PIX</Button>
+                            <Input
+                                style={{ flex: 1 }}
+                                value={key}
+                                onChange={e => setKey(e.target.value)}
+                                placeholder='Insira a chave'
+                            />
+                            <Button onClick={handleReceivedPix}>Pagar PIX</Button>
                         </InlineContainer>
                     </Card>
 
