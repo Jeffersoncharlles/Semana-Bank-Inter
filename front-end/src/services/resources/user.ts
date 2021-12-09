@@ -1,17 +1,17 @@
 import { api } from '../api';
 
-interface SignInData {
+export interface ISignInData {
     email: string;
     password: string;
 }
-interface SignUpData {
+export interface ISignUpData {
     firstName: string;
     lastName: string;
     email: string;
     password: string;
 }
 
-const signIn = async (data: SignInData) => {
+const signIn = async (data: ISignInData) => {
     const user = await api.post('/user/signin', data);
     return user;
 }
@@ -20,7 +20,7 @@ const me = async () => {
     return user;
 }
 
-const signUp = async (data: SignUpData) => {
+const signUp = async (data: ISignUpData) => {
     return api.post('/user/signup', data);
 }
 
