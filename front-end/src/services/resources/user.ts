@@ -11,13 +11,23 @@ export interface ISignUpData {
     password: string;
 }
 
+export interface IUserDto {
+    id: string;
+    firstName: string;
+    lastName: string;
+    accountNumber: number;
+    accountDigit: number;
+    wallet: number;
+    email: string;
+}
+
 const signIn = async (data: ISignInData) => {
     const user = await api.post('/user/signin', data);
     return user;
 }
 const me = async () => {
-    const user = await api.get('/user/me');
-    return user;
+    return api.get<IUserDto>('/user/me');
+
 }
 
 const signUp = async (data: ISignUpData) => {
