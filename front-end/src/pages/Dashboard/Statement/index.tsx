@@ -3,6 +3,9 @@ import {
     ContainerStatement,
 } from './styles';
 import { StatementItem } from '../../../components/StatementItem';
+import { useAuth } from '../../../hooks/useAuth';
+import { useEffect, useState } from 'react';
+import { transactions } from '../../../services/resources/pix';
 interface StatementItem {
     user: {
         firstName: string;
@@ -15,30 +18,21 @@ interface StatementItem {
 
 
 export const Statement = () => {
-    const statements: StatementItem[] = [
-        {
-            user: {
-                firstName: "Rosetta ",
-                lastName: "Salazar"
-            },
-            value: 500.00,
-            updated_at: new Date(),
-            type: "paid"
-        }
-        , {
-            user: {
-                firstName: "Jessie",
-                lastName: "Griffith"
-            },
-            value: 790,
-            updated_at: new Date(),
-            type: "received"
-        }
-    ]
+    const { } = useAuth();
+    const [statements, setStatements] = useState<StatementItem[]>([]);
+
+    const getAllTransactions = async () => {
+        const { data } = await transactions();
+        setStatements(data);
+    }
+
+    useEffect(() => {
+        getAllTransactions();
+    }, [])
 
     return (
         <ContainerStatement>
-            {statements.map(statement => <StatementItem {...statement} />)}
+            {statements.length > 0 && statements?.map(statement => <StatementItem {...statement} />)}
         </ContainerStatement>
     )
 }

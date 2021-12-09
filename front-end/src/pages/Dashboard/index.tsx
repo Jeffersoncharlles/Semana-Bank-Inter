@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Button } from '../../components/Button';
 import { Card } from '../../components/Card';
 import { Header } from '../../components/Header';
@@ -12,9 +13,17 @@ import {
 } from './styles';
 
 export const Dashboard = () => {
-    const { user } = useAuth();
+    const { user, getCurrentUser } = useAuth();
 
-    const wallet = user.wallet;
+    const wallet = user?.wallet || 0;
+
+    useEffect(() => {
+        getCurrentUser();
+    }, [])
+
+    if (!user) {
+        return null;
+    }
 
     return (
         <Container>

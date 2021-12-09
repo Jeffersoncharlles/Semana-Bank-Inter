@@ -15,13 +15,21 @@ interface IContextData {
     user: UserDto;
     UserSignIn: (userData: ISignInData) => Promise<UserDto>;
     UserSignUp: (userData: ISignUpData) => Promise<UserDto>;
-    me: () => Promise<AxiosResponse<UserDto, any>>;
+    getCurrentUser: () => Promise<UserDto>;
 }
 
 const AuthContext = createContext<IContextData>({} as IContextData)
 
 const AuthProvider: React.FC = ({ children }) => {
-    const [user, setUser] = useState<UserDto>({} as UserDto)
+    const [user, setUser] = useState<UserDto>(() => {
+        const user = localStorage.getItem("@InterDev:User");
+
+        if (user) {
+            return JSON.parse(user);
+        }
+
+        return {} as UserDto
+    })
 
     //logar user
     const UserSignIn = async (userData: ISignInData) => {
@@ -32,26 +40,28 @@ const AuthProvider: React.FC = ({ children }) => {
         if (data.accessToken) {
             localStorage.setItem('@InterDev:Token', data.accessToken);
         }
-        return await getCurrentUser();
+        return getCurrentUser();
+
     }
 
     //cadastrar user
     const UserSignUp = async (userData: ISignUpData) => {
         const { data } = await signUp(userData);
         localStorage.setItem('@InterDev:Token', data.accessToken);
-        const user = await getCurrentUser();
-        return user;
+        return getCurrentUser();
+
     }
 
     //salvar usuario na variavel
     const getCurrentUser = async () => {
         const { data } = await me();
         setUser(data)
+        localStorage.setItem("@InterDev:User", JSON.stringify(data))
         return data as UserDto;
     }
 
     return (
-        <AuthContext.Provider value={{ user, UserSignIn, UserSignUp, me }}>
+        <AuthContext.Provider value={{ user, UserSignIn, UserSignUp, getCurrentUser }}>
             {children}
         </AuthContext.Provider>
     )
