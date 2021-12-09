@@ -2,6 +2,7 @@ import { Button } from '../../components/Button';
 import { Card } from '../../components/Card';
 import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
+import { useAuth } from '../../hooks/useAuth';
 import { Statement } from './Statement';
 import {
     Container,
@@ -11,8 +12,9 @@ import {
 } from './styles';
 
 export const Dashboard = () => {
+    const { user } = useAuth();
 
-    const wallet = 5000;
+    const wallet = user.wallet;
 
     return (
         <Container>
