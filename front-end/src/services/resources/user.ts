@@ -16,7 +16,7 @@ const signIn = async (data: SignInData) => {
     return user;
 }
 const me = async () => {
-    const user = await api.get('/me');
+    const user = await api.get('/user/me');
     return user;
 }
 
