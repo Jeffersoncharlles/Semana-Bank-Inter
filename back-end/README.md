@@ -1,9 +1,5 @@
-- Requisitos e ambiente 
-
-- Visual Studio Code
-  Extensões:
-- Insomnia ou Postman
-
+subir db
+`docker-compose up -d`
 
 ---
 Dependencias nescessárias
@@ -14,7 +10,3 @@ ts-node -D
 @types/express -D
 @types/node -D
 nodemon -D
-
-
-Criando setup Ininical - Referencias.
-https://dev.to/melquisedecfelipe/configurando-eslint-no-node-com-express-e-typescript-58p9
